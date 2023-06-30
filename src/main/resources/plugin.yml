@@ -1,0 +1,31 @@
+name: BuyAndSell
+version: '${project.version}'
+main: me.alfredo.buyandsell.BuyAndSell
+api-version: 1.17
+authors: [ Alfredo ]
+depend:
+  - PlaceholderAPI
+commands:
+  viewbalance:
+    description: Shows your balance
+    usage: /viewbalance (<Wallet>)
+  pay:
+    description: Pays a player
+    usage: /pay <Player> <Amount> (<From Wallet>) (<To Wallet>)
+  getmoney:
+    description: Gets money given by the gods, requires perms
+    usage: /getmoney <Amount>
+  makewallet:
+    description: Creates a new wallet
+    usage: /makewallet <Name> (<Player>)
+  transfertowallet:
+    description: Moves money from one wallet to a nother within the player
+    usage: /transfertowallet <from> <to>
+  bnsreload:
+    description: Reloads the plugin
+    aliases:
+      - bnsrl
+  sellhand:
+    description: Sells one of the item in your hand
+  shop:
+    description: Opens a GUI you can sell stuff in

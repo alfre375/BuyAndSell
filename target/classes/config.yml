@@ -1,0 +1,7 @@
+cashQTYs:
+
+defaultCash: 100
+spareWalletDefault: 0
+
+ItemSellValues:
+  DIRT: 1
