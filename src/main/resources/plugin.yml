@@ -10,6 +10,9 @@ commands:
   viewbalance:
     description: Shows your balance
     usage: /viewbalance (<Wallet>)
+    aliases:
+      - bal
+      - balance
   pay:
     description: Pays a player
     usage: /pay <Player> <Amount> (<From Wallet>) (<To Wallet>)
