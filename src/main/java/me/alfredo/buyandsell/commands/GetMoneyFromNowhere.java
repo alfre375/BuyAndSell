@@ -20,10 +20,10 @@ public class GetMoneyFromNowhere implements CommandExecutor {
             Player p = (Player) sender;
             if (p.isOp() || p.hasPermission("BuyAndSell.GetMoneyFromThinAir")){
                 if(buySell.hasBalance(p,"default")) {
-                    Integer old = buySell.config.getInt(buySell.getCashPath(p, "default"));
-                    Integer other = Integer.parseInt(args[0]);
-                    System.out.println("Printing: CashQTYs:" + old + " , args[0](int):" + other + " args[0](orig):"+args[0]);
-                    Integer New_Amount = old + other;
+                    double old = buySell.config.getDouble(buySell.getCashPath(p, "default"));
+                    double other = Double.parseDouble(args[0]);
+                    System.out.println("Printing: CashQTYs:" + old + " , args[0](double):" + other + " args[0](orig):"+args[0]);
+                    double New_Amount = old + other;
                     buySell.config.set(buySell.getCashPath(p, "default"), New_Amount);
                     p.sendMessage(ChatColor.GREEN + "You have been granted $" + args[0] + " by the gods of Minecraft: Java Edition!");
                 }

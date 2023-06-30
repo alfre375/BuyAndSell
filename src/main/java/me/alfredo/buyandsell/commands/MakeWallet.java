@@ -42,7 +42,7 @@ public class MakeWallet implements CommandExecutor {
                 }
             }
             if (p.isOp() || p.hasPermission("BuyAndSell.MakeWallet")) {
-                buyAndSell.getConfig().set(buyAndSell.getCashPath(t,wallet),buyAndSell.getConfig().getInt("spareWalletDefault"));
+                buyAndSell.getConfig().set(buyAndSell.getCashPath(t,wallet),buyAndSell.getConfig().getDouble("spareWalletDefault"));
             }
         }
         return true;

@@ -27,8 +27,8 @@ public class SellHand implements CommandExecutor {
             for (String x : stringList) {
 
                 if (x.equalsIgnoreCase(type.name())) {
-                    int y = buySell.config.getInt("ItemSellValues." + x);
-                    buySell.config.set(buySell.getCashPath(p,"default"),buySell.getConfig().getInt(buySell.getCashPath(p,"default") + y));
+                    double y = buySell.config.getDouble("ItemSellValues." + x);
+                    buySell.config.set(buySell.getCashPath(p,"default"),buySell.getConfig().getDouble(buySell.getCashPath(p,"default") + y));
                     inHand.setAmount(inHand.getAmount() - 1);
                     isDone = true;
                 }

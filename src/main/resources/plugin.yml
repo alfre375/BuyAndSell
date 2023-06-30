@@ -3,8 +3,9 @@ version: '${project.version}'
 main: me.alfredo.buyandsell.BuyAndSell
 api-version: 1.17
 authors: [ Alfredo ]
-depend:
+softdepend:
   - PlaceholderAPI
+  - Vault
 commands:
   viewbalance:
     description: Shows your balance

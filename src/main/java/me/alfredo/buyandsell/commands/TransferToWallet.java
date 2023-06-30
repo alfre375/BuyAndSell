@@ -17,7 +17,7 @@ public class TransferToWallet implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;
-        Integer quantity;
+        double quantity;
 
         String fromWallet = "";
         String toWallet = "";
@@ -41,14 +41,14 @@ public class TransferToWallet implements CommandExecutor {
         }
 
         try{
-            quantity = Integer.parseInt(args[2]);
+            quantity = Double.parseDouble(args[2]);
         }catch(NumberFormatException e){
-            sender.sendMessage(ChatColor.RED + "This command argument only takes values that can be converted into integers. No decimals!");
+            sender.sendMessage(ChatColor.RED + "This command argument only takes values that can be converted into doubles. No text!");
             return true;
         }
-        if (buySell.config.getInt(buySell.getCashPath(p,fromWallet)) >= quantity) {
-            buySell.config.set(buySell.getCashPath(p,fromWallet), buySell.config.getInt(buySell.getCashPath(p,fromWallet)) - quantity);
-            buySell.config.set(buySell.getCashPath(p,toWallet), buySell.config.getInt(buySell.getCashPath(p,toWallet)) + quantity);
+        if (buySell.config.getDouble(buySell.getCashPath(p,fromWallet)) >= quantity) {
+            buySell.config.set(buySell.getCashPath(p,fromWallet), buySell.config.getDouble(buySell.getCashPath(p,fromWallet)) - quantity);
+            buySell.config.set(buySell.getCashPath(p,toWallet), buySell.config.getDouble(buySell.getCashPath(p,toWallet)) + quantity);
             p.sendMessage(ChatColor.GREEN + "You have put " + " $" + quantity + " into wallet " + toWallet + " from wallet " + fromWallet + " with success!");
             System.out.println(p.getName() + p.getDisplayName() + " has put " + " $" + quantity + " into wallet " + toWallet + " from wallet " + fromWallet + " with success!");
         }

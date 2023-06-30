@@ -17,7 +17,7 @@ public class OnPlayerJoin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         if (!buySell.hasBalance(e.getPlayer(),"default")) {
             Player p = e.getPlayer();
-            buySell.config.set(buySell.getCashPath(p, "default"), buySell.config.getInt("defaultCash"));
+            buySell.config.set(buySell.getCashPath(p, "default"), buySell.config.getDouble("defaultCash"));
         }
     }
 }
