@@ -1,6 +1,5 @@
 package me.alfredo.buyandsell.commands;
 
-import jdk.tools.jlink.internal.plugins.StripNativeCommandsPlugin;
 import me.alfredo.buyandsell.BuyAndSell;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -24,7 +23,7 @@ public class ViewBalance implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
             if (buySell.hasBalance((Player) sender,"default")) {
-                p.sendMessage(ChatColor.GREEN + "You have $" + buySell.config.getInt(buySell.getCashPath(p,wallet)) + " in your balance!");
+                p.sendMessage(ChatColor.GREEN + "You have $" + buySell.config.getDouble(buySell.getCashPath(p,wallet)) + " in your balance!");
             } else {
                 p.sendMessage("You somehow don't have a balance, try leaving and re-joining!");
             }

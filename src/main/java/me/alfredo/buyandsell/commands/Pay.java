@@ -32,11 +32,11 @@ public class Pay implements CommandExecutor {
         }
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            Integer quantity;
+            double quantity;
             try{
-                quantity = Integer.parseInt(args[1]);
+                quantity = Double.parseDouble(args[1]);
             }catch(NumberFormatException e){
-                sender.sendMessage(ChatColor.RED + "This command argument only takes values that can be converted into integers. No decimals!");
+                sender.sendMessage(ChatColor.RED + "This command argument only takes values that can be converted into doubles. No text!");
                 return true;
             }
 
@@ -44,9 +44,9 @@ public class Pay implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "The amount you entered is a negative number, which are not allowed, to charge the person money, use /charge or /fcharge");
                 return true;
             }
-            if (buySell.config.getInt(buySell.getCashPath(p,fromWallet)) >= quantity) {
-                buySell.config.set(buySell.getCashPath(p,fromWallet), buySell.config.getInt(buySell.getCashPath(p,fromWallet)) - quantity);
-                buySell.config.set(buySell.getCashPath(target,toWallet), buySell.config.getInt(buySell.getCashPath(target,toWallet)) + quantity);
+            if (buySell.config.getDouble(buySell.getCashPath(p,fromWallet)) >= quantity) {
+                buySell.config.set(buySell.getCashPath(p,fromWallet), buySell.config.getDouble(buySell.getCashPath(p,fromWallet)) - quantity);
+                buySell.config.set(buySell.getCashPath(target,toWallet), buySell.config.getDouble(buySell.getCashPath(target,toWallet)) + quantity);
                 p.sendMessage(ChatColor.GREEN + "You have paid " + args[0] + " $" + quantity + " with success!");
                 target.sendMessage(ChatColor.GREEN + "You have been paid $" + quantity + " by the generous player who goes by the name of " + p.getName() + "!");
                 System.out.println(p.getName() + " has given $" + quantity + " to " + args[0] + "!");

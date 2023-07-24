@@ -139,13 +139,13 @@ public class GUIMenuClick implements Listener {
                 switch (type) {
                     case EMERALD_BLOCK:
                         pwc.closeInventory();
-                        if (buyAndSell.config.getInt(buyAndSell.getCashPath(pwc,"default")) > 100) {
+                        if (buyAndSell.config.getDouble(buyAndSell.getCashPath(pwc,"default")) > 100) {
                             ItemStack diamond = new ItemStack(Material.DIAMOND,1);
-                            buyAndSell.config.set(buyAndSell.getCashPath(pwc,"default"), buyAndSell.config.getInt(buyAndSell.getCashPath(pwc,"default")) - 100);
+                            buyAndSell.config.set(buyAndSell.getCashPath(pwc,"default"), buyAndSell.config.getDouble(buyAndSell.getCashPath(pwc,"default")) - 100);
                             pwc.getInventory().addItem(diamond);
-                            pwc.sendMessage(ChatColor.GREEN + "You have successfully purchased 1 diamond. You have $" + buyAndSell.config.getInt(buyAndSell.getCashPath(pwc,"default")) + " left in yur default wallet");
+                            pwc.sendMessage(ChatColor.GREEN + "You have successfully purchased 1 diamond. You have $" + buyAndSell.config.getDouble(buyAndSell.getCashPath(pwc,"default")) + " left in yur default wallet");
                         } else {
-                            int moreNeeded = 100 - buyAndSell.config.getInt(buyAndSell.getCashPath(pwc,"default"));
+                            double moreNeeded = 100 - buyAndSell.config.getDouble(buyAndSell.getCashPath(pwc,"default"));
                             pwc.sendMessage(ChatColor.RED + "You do not have enough money to buy diamond. Cost: $100. You need $" + moreNeeded + " more.");
                         }
                         break;

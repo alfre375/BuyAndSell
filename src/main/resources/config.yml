@@ -4,6 +4,7 @@ defaultCash: 100
 spareWalletDefault: 0
 defaultCurrencyName: "International Currency"
 defaultLang: "EN"
+connectVault: true # Connects vault if vault is installed
 
 playerLanguages:
 
