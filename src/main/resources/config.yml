@@ -13,6 +13,6 @@ currencies:
 exchangeFee: 0 #in %
 exchangeFeeFixed: 0 #added after "Exchange Fee", in $ on "to" currency
 
-
+moneyItemName: "&6Money"
 ItemSellValues:
   DIRT: 1
