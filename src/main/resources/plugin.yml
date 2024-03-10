@@ -33,3 +33,5 @@ commands:
     description: Sells one of the item in your hand
   shop:
     description: Opens a GUI you can sell stuff in
+  moneyitem:
+    description: Grants a money item which can be used to transfer money using an item
