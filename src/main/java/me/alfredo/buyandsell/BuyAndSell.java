@@ -4,6 +4,7 @@ import me.alfredo.buyandsell.commands.*;
 import me.alfredo.buyandsell.enums.WithdrawEvaluations;
 import me.alfredo.buyandsell.events.GUIMenuClick;
 import me.alfredo.buyandsell.events.OnPlayerJoin;
+import me.alfredo.buyandsell.events.PlayerItemRightClick;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -30,7 +31,9 @@ public final class BuyAndSell extends JavaPlugin {
         getServer().getPluginCommand("bnsreload").setExecutor(new Reload(this));
         getServer().getPluginCommand("sellhand").setExecutor(new SellHand(this));
         getServer().getPluginCommand("shop").setExecutor(new Shop(this));
+        getServer().getPluginCommand("moneyitem").setExecutor(new MoneyItemCommand(this));
         getServer().getPluginManager().registerEvents(new GUIMenuClick(this),this);
+        getServer().getPluginManager().registerEvents(new PlayerItemRightClick(this),this);
         vaultConnected = isVaultInstalled && config.getBoolean("connectVault");
         if (vaultConnected) {
             economyImplementer = new EconomyImplementer(this);
@@ -81,6 +84,10 @@ public final class BuyAndSell extends JavaPlugin {
         } else {
             return WithdrawEvaluations.NOT_ENOUGH_MONEY;
         }
+    }
+
+    public WithdrawEvaluations withdrawCash(Player p, String wallet, double amount) {
+        return withdrawCash(p, wallet, amount);
     }
     public double PlayerCurrentCash;
     public boolean isVaultInstalled() {

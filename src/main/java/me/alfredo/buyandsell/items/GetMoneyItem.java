@@ -2,6 +2,7 @@ package me.alfredo.buyandsell.items;
 
 import me.alfredo.buyandsell.BuyAndSell;
 import me.alfredo.buyandsell.enums.ItemGrantSuccessEnum;
+import me.alfredo.buyandsell.enums.WithdrawEvaluations;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -42,17 +43,24 @@ public class GetMoneyItem {
         if (amount < 0) {
             return ItemGrantSuccessEnum.NEGATIVE_VALUE;
         }
-        ItemStack item = generateMoneyItem(amount);
-        Inventory inv = p.getInventory();
-        int fe = inv.firstEmpty();
-        if (fe < 0) {
-            p.getWorld().dropItem(p.getLocation(), item);
-            p.sendMessage(ChatColor.RED +
-                    "STOP! Your money item is on the floor!");
-            return ItemGrantSuccessEnum.SUCCESS_DROPPED;
+
+        WithdrawEvaluations we = bns.withdrawCash(p, "default", amount);
+
+        if (we == WithdrawEvaluations.SUCCESS) {
+            ItemStack item = generateMoneyItem(amount);
+            Inventory inv = p.getInventory();
+            int fe = inv.firstEmpty();
+            if (fe < 0) {
+                p.getWorld().dropItem(p.getLocation(), item);
+                p.sendMessage(ChatColor.RED +
+                        "STOP! Your money item is on the floor!");
+                return ItemGrantSuccessEnum.SUCCESS_DROPPED;
+            } else {
+                inv.addItem(item);
+                return ItemGrantSuccessEnum.SUCCESS;
+            }
         } else {
-            inv.addItem(item);
-            return ItemGrantSuccessEnum.SUCCESS;
+            return ItemGrantSuccessEnum.FAIL;
         }
     }
 }
